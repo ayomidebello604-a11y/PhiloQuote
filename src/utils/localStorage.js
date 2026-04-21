@@ -5,19 +5,19 @@ export const getFavorites = () => {
 
 export const saveFavorite = (quote) => {
   const favorites = getFavorites();
-  const exists = favorites.find((q) => q._id === quote._id);
+  const exists = favorites.find((q) => q.id === quote.id);
   if (!exists) {
     localStorage.setItem("favorites", JSON.stringify([...favorites, quote]));
   }
 };
 
 export const removeFavorite = (id) => {
-  const favorites = getFavorites().filter((q) => q._id !== id);
+  const favorites = getFavorites().filter((q) => q.id !== id);
   localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
 export const isFavorite = (id) => {
-  return getFavorites().some((q) => q._id === id);
+  return getFavorites().some((q) => q.id === id);
 };
 
 // JOURNAL
